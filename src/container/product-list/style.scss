@@ -1,0 +1,46 @@
+@use '../../lib/service.scss' as s;
+
+.card {
+	display: flex;
+	flex-direction: column;
+	padding: s.space(4);
+	margin: s.space(2);
+	margin-bottom: s.space(2);
+	gap: s.space(4);
+	box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+
+	&__title {
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	&__description {
+		font-size: 16px;
+	}
+
+	&__id {
+		font-size: 16px;
+		opacity: 0.5;
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__price {
+		font-size: 20px;
+		font-weight: bold;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	
+}
+

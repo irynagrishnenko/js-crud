@@ -1,0 +1,81 @@
+@use '../../lib/service.scss' as s;
+
+.card {
+	display: flex;
+	flex-direction: column;
+	padding: s.space(4);
+	margin: s.space(4);
+	gap: s.space(8);
+	box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+
+	&__title {
+		font-size: 24px;
+		font-weight: bold;
+		padding-bottom: s.space(1);
+	}
+
+	&__button {
+		border: 1px solid s.color('light');
+		padding: s.space(2);
+		border-radius: 6px;
+		background-color: blue;
+		color: white;
+		cursor: pointer;
+		width: 100%;
+	}	
+}
+
+.button__group {
+	display: flex;
+	gap: s.space(4);
+}
+
+.button-danger {
+	background-color: red;
+	text-decoration: none;
+	text-align: center;
+}
+
+form {
+	display: grid;
+	gap: s.space(8);
+}
+
+.form__content {
+	display: flex;
+	gap: s.space(6);
+	width: 100%;
+	max-width: 100%;
+}
+
+.form__field {
+	display: flex;
+	flex-direction: column;
+	gap: s.space(2);
+	width: 100%;
+
+}
+
+.form__label {
+	font-size: 16px;
+}
+
+.form__input {
+	border: 1px solid s.color('light');
+	border-radius: 6px;
+	padding: s.space(2);
+}
+
+.form__input-description {
+	border: 1px solid s.color('light');
+	border-radius: 6px;
+	padding: s.space(2);
+	height: 80;
+}
+
+span {
+	opacity: 0.6;
+	font-size: 14px;
+}
+
+
