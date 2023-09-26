@@ -1,0 +1,70 @@
+<main>
+  <section>
+    {{#with data}}
+      {{#each products.list}}
+        <div class='card'>
+          <h1 class='card__title'>Інформація про товар</h1>
+          <form method='POST' action='/product-edit'>
+            <div class='form__content'>
+              <div class='form__field'>
+                <label for='name' class='form__label'>Назва
+                  товару</label>
+                <input
+                  type='text'
+                  name='name'
+                  class='form__input'
+                  value='{{name}}'
+                />
+              </div>
+              <div class='form__field'>
+                <label
+                  for='price'
+                  class='form__label'
+                >Ціна</label>
+                <input
+                  type='number'
+                  name='price'
+                  class='form__input'
+                  value='{{price}}'
+                />
+              </div>
+              <div class='form__field'>
+                <label
+                  for='id'
+                  class='form__label'
+                >ID</label>
+                <input
+                  type='number'
+                  name='id'
+                  class='form__input'
+                  value='{{id}}'
+                />
+              </div>
+            </div>
+            <div class='form__field'>
+              <label
+                for='description'
+                class='form__label'
+              >Короткий опис товару</label>
+              <input
+                type='text'
+                name='description'
+                class='form__input-description'
+                value='{{description}}'
+              />
+              <span>Відображується у картці товару</span>
+            </div>
+            <div class='button__group'>
+              <button class='card__button'>Зберегти
+                оновлення</button>
+              <a
+                href='/product-delete?id={{id}}'
+                class='card__button button-danger'
+              >Видалити товар</a>
+            </div>
+          </form>
+        </div>
+      {{/each}}
+    {{/with}}
+  </section>
+</main>

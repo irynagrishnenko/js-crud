@@ -1,0 +1,17 @@
+<main>
+  <section>
+    {{#with data}}
+      {{#if isEmpty}}
+        <mark>Пустий</mark>
+      {{else}}
+        <ul>
+          {{#each products.list}}
+            <li>
+              {{> product-card}}
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    {{/with}}
+  </section>
+</main>

@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin: 8px;
+  margin-bottom: 8px;
+  gap: 16px;
+  box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+}
+.card__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.card__description {
+  font-size: 16px;
+}
+.card__id {
+  font-size: 16px;
+  opacity: 0.5;
+}
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+}
+.card__price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/*# sourceMappingURL=style.css.map */
