@@ -1,0 +1,65 @@
+{{! 
+Це код container файлу для index сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+ }}
+
+<main class="main">
+	{{#with data}}
+			{{>heading title="Інформація про замовлення"}}
+			
+			<div>
+				<label for="id">ID:</label>
+				<span name="id">{{id}}</span>
+			</div>
+			{{>divider}}
+			<div>
+				<label for="firstname">Ім'я:</label>
+				<span name="firstname">{{firstname}}</span>
+			</div>
+			<div>
+				<label for="lastname">Прізвище:</label>
+				<span name="lastname">{{lastname}}</span>
+			</div>
+			<div>
+				<label for="phone">Телефон:</label>
+				<span name="phone">{{phone}}</span>
+			</div>
+			<div>
+				<label for="email">Електронна пошта:</label>
+				<span name="email">{{email}}</span>
+			</div>
+			{{>divider}}
+			<div>
+				<label for="name">Назва товару:</label>
+				<span name="name">{{product.title}}</span>
+			</div>
+			<div>
+				<label for="comment">Коментар:</label>
+				<span name="comment">{{comment}}</span>
+			</div>
+			{{>divider}}
+			<div>
+				<label for="productPrice">Вартість товарів:</label>
+				<span name="productPrice">{{productPrice}} грн</span>
+			</div>
+			<div>
+				<label for="totalPrice">Сума до сплати:</label>
+				<span name="totalPrice">{{totalPrice}} грн</span>
+			</div>
+			<div>
+				<label for="deliveryPrice">Вартість доставки:</label>
+				<span name="deliveryPrice">{{deliveryPrice}} грн</span>
+			</div>
+			<div>
+				<label for="bonus">Бонуси:</label>
+				<span name="bonus">{{bonus}}</span>
+			</div>
+			{{>divider}}
+			<a href="/purchase-update?id={{id}}">{{>button text="Змінити дані"}}</a>
+	{{/with}}
+</main>
+
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}

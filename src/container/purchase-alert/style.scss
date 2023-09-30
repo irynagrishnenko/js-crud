@@ -1,0 +1,40 @@
+@use '../../lib/service.scss' as s;
+
+.card {
+	display: flex;
+	justify-content: space-between;
+	padding: s.space(4);
+	margin: s.space(4);
+	box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+
+	&__header {
+		display: grid;
+		gap: s.space(4);
+	}
+
+	&__title {
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	&__button {
+		font-size: 20px;
+		padding-right: s.space(10);
+		padding-left: s.space(10);
+		margin: 6px;
+		border-radius: 6px;
+		cursor: pointer;
+	}
+
+	&__button--blue {
+		background-color: blue;
+		color: white;
+	}
+}
+
+a {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+

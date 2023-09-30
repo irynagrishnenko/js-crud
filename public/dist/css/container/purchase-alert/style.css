@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  margin: 16px;
+  box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3);
+}
+.card__header {
+  display: grid;
+  gap: 16px;
+}
+.card__title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.card__button {
+  font-size: 20px;
+  padding-right: 40px;
+  padding-left: 40px;
+  margin: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.card__button--blue {
+  background-color: blue;
+  color: white;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */
