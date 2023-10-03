@@ -469,18 +469,11 @@ router.get('/purchase-info', function (req, res) {
   // res.render генерує нам HTML сторінку
   const id = Number(req.query.id)
   const purchase = Purchase.getById(id)
-  const {
-    firstname,
-    lastname,
-    phone,
-    email,
-    product,
-    comment,
-    productPrice,
-    totalPrice,
-    deliveryPrice,
-    bonus,
-  } = purchase
+  const bonus = Purchase.calcBonusAmount(
+    purchase.totalPrice,
+  )
+
+  console.log('purchase:', purchase, bonus)
 
   // ↙️ cюди вводимо назву файлу з сontainer
   res.render('purchase-info', {
@@ -488,17 +481,17 @@ router.get('/purchase-info', function (req, res) {
     style: 'purchase-info',
 
     data: {
-      id,
-      firstname,
-      lastname,
-      phone,
-      email,
-      product,
-      comment,
-      productPrice,
-      totalPrice,
-      deliveryPrice,
-      bonus,
+      id: purchase.id,
+      firstname: purchase.firstname,
+      lastname: purchase.lastname,
+      phone: purchase.phone,
+      email: purchase.email,
+      comment: purchase.comment,
+      product: purchase.product,
+      productPrice: purchase.productPrice,
+      deliveryPrice: purchase.deliveryPrice,
+      totalPrice: purchase.totalPrice,
+      bonus: bonus,
     },
   })
   // ↑↑ сюди вводимо JSON дані
@@ -507,51 +500,81 @@ router.get('/purchase-info', function (req, res) {
 router.get('/purchase-update', function (req, res) {
   const id = Number(req.query.id)
   const purchase = Purchase.getById(id)
-  const { firstname, lastname, phone, email } = purchase
 
-  // ↙️ cюди вводимо назву файлу з сontainer
-  res.render('purchase-update', {
-    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-    style: 'purchase-update',
-
-    data: {
-      id,
-      firstname,
-      lastname,
-      phone,
-      email,
-    },
-  })
-})
-
-router.post('/purchase-update', function (req, res) {
-  const id = Number(req.query.id)
-  const { firstname, lastname, phone, email } = req.body
-
-  const isUpdated = Purchase.updateById(id, {
-    firstname,
-    lastname,
-    phone,
-    email,
-  })
-
-  if (isUpdated) {
-    res.render('purchase-alert', {
-      style: 'purchase-alert',
-
-      data: {
-        message: 'Успішно',
-        info: 'Дані успішно оновлені',
-        link: `/purchase-list`,
-      },
-    })
-  } else {
+  if (!purchase) {
+    // Якщо товар з таким id не знайдено, відображаємо повідомлення про помилку
     res.render('purchase-alert', {
       style: 'purchase-alert',
 
       data: {
         message: 'Помилка',
-        info: 'Дані не оновлені',
+        info: 'Замовлення з таким ID не знайдено',
+        link: `/purchase-list`,
+      },
+    })
+  } else {
+    // ↙️ cюди вводимо назву файлу з сontainer
+    res.render('purchase-update', {
+      // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+      style: 'purchase-update',
+
+      data: {
+        id: purchase.id,
+        firstname: purchase.firstname,
+        lastname: purchase.lastname,
+        phone: purchase.phone,
+        email: purchase.email,
+      },
+    })
+  }
+})
+
+router.post('/purchase-update', function (req, res) {
+  const id = Number(req.query.id)
+  let { firstname, lastname, phone, email } = req.body
+
+  const purchase = Purchase.getById(id)
+  console.log(purchase)
+
+  if (purchase) {
+    const isUpdated = Purchase.updateById(id, {
+      firstname,
+      lastname,
+      phone,
+      email,
+    })
+
+    console.log(isUpdated)
+
+    if (isUpdated) {
+      res.render('purchase-alert', {
+        style: 'purchase-alert',
+
+        data: {
+          message: 'Успішно',
+          info: 'Дані успішно оновлені',
+          link: `/purchase-list`,
+        },
+      })
+    } else {
+      res.render('purchase-alert', {
+        style: 'purchase-alert',
+
+        data: {
+          message: 'Помилка',
+          info: 'Дані не оновлені',
+          link: `/purchase-list`,
+        },
+      })
+    }
+  } else {
+    // Якщо товар з таким id не знайдено, відображаємо повідомлення про помилку
+    res.render('purchase-alert', {
+      style: 'purchase-alert',
+
+      data: {
+        message: 'Помилка',
+        info: 'Замовлення з таким ID не знайдено',
         link: `/purchase-list`,
       },
     })
